@@ -34,7 +34,38 @@ namespace WriteSerialNumber
         {
             lbBIOS.Text = DMIController.GetBiosManufacturer();
             this.FormBorderStyle = FormBorderStyle.None;
-            Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 15, 15));            
+            Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 15, 15));
+        }
+
+        private Boolean CheckSizeSerialNumber(string serialNumber)
+        {
+
+            try
+            {
+
+
+                if (serialNumber.Length < 15 || serialNumber.Length > 15)
+                {
+                    return false;
+                }
+
+            }
+            catch (Exception err)
+            {
+                throw new Exception(err.Message);
+            }
+
+            return true;
+        }
+
+        private Boolean isNumeric(string serialNumber)
+        {
+            if (serialNumber.Where(c => char.IsLetter(c)).Count() > 0)
+            {
+                return false;
+            }
+
+            return true;
         }
 
         private void txtSerialNumber_KeyDown(object sender, KeyEventArgs e)
@@ -45,7 +76,10 @@ namespace WriteSerialNumber
             {
                 if (e.KeyValue == 13)
                 {
-                    if(string.IsNullOrEmpty(serialnumber))
+                    
+                    lbError.Text = "";
+
+                    if (string.IsNullOrEmpty(serialnumber) || !CheckSizeSerialNumber(serialnumber) || !isNumeric(serialnumber))
                     {
                         throw new Exception("Serial Number is invalid.");
                     }
@@ -55,10 +89,12 @@ namespace WriteSerialNumber
                     lbError.Text = "Serial number saved successfully.";
                     lbError.Visible = true;
                     txtSerialNumber.Text = "";
+
+                    MessageBox.Show($"{serialnumber}, saved successfully.");
                 }
             }
             catch (Exception ex)
-            {                
+            {
                 lbError.Text = ex.Message;
                 lbError.Visible = true;
             }

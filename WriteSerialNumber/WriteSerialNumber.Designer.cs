@@ -139,7 +139,7 @@ namespace WriteSerialNumber
             this.txtSerialNumber.Name = "txtSerialNumber";
             this.txtSerialNumber.Size = new System.Drawing.Size(655, 81);
             this.txtSerialNumber.TabIndex = 0;
-            this.txtSerialNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtSerialNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;            
             this.txtSerialNumber.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSerialNumber_KeyDown);
             // 
             // label1
