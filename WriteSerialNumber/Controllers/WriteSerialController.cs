@@ -23,7 +23,7 @@ namespace WriteSerialNumber.Controllers
                 if (DMIController.GetBiosManufacturer() == "INSYDE Corp.")
                 {
                     process.StartInfo.FileName = insyde;
-                    process.StartInfo.Arguments = $"-SS \"{value}\"";
+                    process.StartInfo.Arguments = $"-BS \"{value}\"";
                     process.StartInfo.CreateNoWindow = true;
                     process.StartInfo.UseShellExecute = false;
                     process.StartInfo.RedirectStandardError = true;
@@ -36,7 +36,7 @@ namespace WriteSerialNumber.Controllers
                 else
                 {
                     process.StartInfo.FileName = afunwin;
-                    process.StartInfo.Arguments = $"/SS {value}";
+                    process.StartInfo.Arguments = $"/BS {value}";
                     process.StartInfo.CreateNoWindow = true;
                     process.StartInfo.UseShellExecute = false;
                     process.StartInfo.RedirectStandardError = true;

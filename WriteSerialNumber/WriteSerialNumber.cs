@@ -79,6 +79,7 @@ namespace WriteSerialNumber
             }
             catch (Exception ex)
             {
+                lbError.ForeColor = Color.OrangeRed;
                 lbError.Text = ex.Message;
                 lbError.Visible = true;
             }
@@ -92,6 +93,7 @@ namespace WriteSerialNumber
             }
             catch (Exception ex)
             {
+                lbError.ForeColor = Color.OrangeRed;
                 lbError.Text = ex.Message;
                 lbError.Visible = true;
             }
@@ -105,6 +107,7 @@ namespace WriteSerialNumber
             }
             catch (Exception ex)
             {
+                lbError.ForeColor = Color.OrangeRed;
                 lbError.Text = ex.Message;
                 lbError.Visible = true;
             }
