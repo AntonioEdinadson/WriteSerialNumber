@@ -43,7 +43,6 @@ namespace WriteSerialNumber
             try
             {
 
-
                 if (serialNumber.Length < 15 || serialNumber.Length > 15)
                 {
                     return false;
@@ -58,7 +57,7 @@ namespace WriteSerialNumber
             return true;
         }
 
-        private Boolean isNumeric(string serialNumber)
+        private Boolean IsNumeric(string serialNumber)
         {
             if (serialNumber.Where(c => char.IsLetter(c)).Count() > 0)
             {
@@ -70,33 +69,80 @@ namespace WriteSerialNumber
 
         private void txtSerialNumber_KeyDown(object sender, KeyEventArgs e)
         {
-            string serialnumber = txtSerialNumber.Text;
 
             try
             {
                 if (e.KeyValue == 13)
                 {
-                    
-                    lbError.Text = "";
-
-                    if (string.IsNullOrEmpty(serialnumber) || !CheckSizeSerialNumber(serialnumber) || !isNumeric(serialnumber))
-                    {
-                        throw new Exception("Serial Number is invalid.");
-                    }
-
-                    WriteSerialController.WriteSerialNumber(serialnumber, "");
-                    lbError.ForeColor = Color.LimeGreen;
-                    lbError.Text = "Serial number saved successfully.";
-                    lbError.Visible = true;
-                    txtSerialNumber.Text = "";
-
-                    MessageBox.Show($"{serialnumber}, saved successfully.");
+                    WriteSerial();
                 }
             }
             catch (Exception ex)
             {
                 lbError.Text = ex.Message;
                 lbError.Visible = true;
+            }
+        }
+
+        private void btnWrite_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                WriteSerial();
+            }
+            catch (Exception ex)
+            {
+                lbError.Text = ex.Message;
+                lbError.Visible = true;
+            }
+        }
+
+        private void btnGet_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                GetSerial();
+            }
+            catch (Exception ex)
+            {
+                lbError.Text = ex.Message;
+                lbError.Visible = true;
+            }
+        }
+
+        private void WriteSerial()
+        {
+            try
+            {
+                lbError.Text = "";
+                string serialnumber = txtSerialNumber.Text;                
+
+                if (string.IsNullOrEmpty(serialnumber) || !IsNumeric(serialnumber))
+                {
+                    throw new Exception("Serial Number is invalid.");
+                }
+
+                WriteSerialController.WriteSerialNumber(serialnumber, "");
+                lbError.ForeColor = Color.LimeGreen;
+                lbError.Text = "Serial number saved successfully.";
+                lbError.Visible = true;
+                txtSerialNumber.Text = "";                
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        private void GetSerial()
+        {
+            try
+            {
+                 txtSerialNumber.Text = DMIController.GetSerialBaseBoard();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
             }
         }
     }

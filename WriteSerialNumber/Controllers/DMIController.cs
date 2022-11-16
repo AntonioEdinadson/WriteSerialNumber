@@ -19,7 +19,19 @@ namespace WriteSerialNumber.Controllers
             }
 
             return biosManufacturer;
-        }                        
+        }
+
+        public static String GetSerialBaseBoard()
+        {
+            String serial = "";
+            ManagementObjectSearcher s2 = new ManagementObjectSearcher("root\\CIMV2", "SELECT * FROM Win32_BASEBOARD");
+            foreach (ManagementObject mo in s2.Get())
+            {
+                serial = mo["SerialNumber"].ToString().Trim();
+            }
+
+            return serial;
+        }
 
         public static void ShutdownCabra()
         {
