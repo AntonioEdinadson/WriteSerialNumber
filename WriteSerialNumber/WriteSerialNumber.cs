@@ -31,8 +31,7 @@ namespace WriteSerialNumber
         );
 
         private void WriteSerialNumber_Load(object sender, EventArgs e)
-        {
-            lbBIOS.Text = DMIController.GetBiosManufacturer();
+        {            
             this.FormBorderStyle = FormBorderStyle.None;
             Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 15, 15));
         }
@@ -55,6 +54,21 @@ namespace WriteSerialNumber
             }
 
             return true;
+        }
+
+        private Boolean IsMotherboardSerialNumber(String serialNumber)
+        {
+            try
+            {
+                string origem = serialNumber.Substring(0, 3);
+                if (origem.Equals("001"))
+                    return true;
+            }
+            catch
+            {
+                return false;
+            }
+            return false;
         }
 
         private Boolean IsNumeric(string serialNumber)
@@ -120,7 +134,7 @@ namespace WriteSerialNumber
                 lbError.Text = "";
                 string serialnumber = txtSerialNumber.Text;                
 
-                if (string.IsNullOrEmpty(serialnumber) || !IsNumeric(serialnumber))
+                if (string.IsNullOrEmpty(serialnumber) || !IsNumeric(serialnumber) || !IsMotherboardSerialNumber(serialnumber))
                 {
                     throw new Exception("Serial Number is invalid.");
                 }

@@ -29,12 +29,11 @@ namespace WriteSerialNumber
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WriteSerialNumber));
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnGet = new System.Windows.Forms.Button();
             this.btnWrite = new System.Windows.Forms.Button();
             this.lbError = new System.Windows.Forms.Label();
-            this.lbBIOS = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.txtSerialNumber = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -48,13 +47,11 @@ namespace WriteSerialNumber
             this.panel1.Controls.Add(this.btnGet);
             this.panel1.Controls.Add(this.btnWrite);
             this.panel1.Controls.Add(this.lbError);
-            this.panel1.Controls.Add(this.lbBIOS);
-            this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.txtSerialNumber);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 48);
+            this.panel1.Location = new System.Drawing.Point(0, 50);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(609, 284);
+            this.panel1.Size = new System.Drawing.Size(609, 220);
             this.panel1.TabIndex = 1;
             // 
             // btnGet
@@ -66,7 +63,7 @@ namespace WriteSerialNumber
             this.btnGet.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGet.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGet.ForeColor = System.Drawing.Color.White;
-            this.btnGet.Location = new System.Drawing.Point(341, 164);
+            this.btnGet.Location = new System.Drawing.Point(341, 149);
             this.btnGet.Name = "btnGet";
             this.btnGet.Size = new System.Drawing.Size(110, 44);
             this.btnGet.TabIndex = 9;
@@ -83,7 +80,7 @@ namespace WriteSerialNumber
             this.btnWrite.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnWrite.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnWrite.ForeColor = System.Drawing.Color.White;
-            this.btnWrite.Location = new System.Drawing.Point(466, 164);
+            this.btnWrite.Location = new System.Drawing.Point(466, 149);
             this.btnWrite.Name = "btnWrite";
             this.btnWrite.Size = new System.Drawing.Size(110, 44);
             this.btnWrite.TabIndex = 8;
@@ -97,43 +94,19 @@ namespace WriteSerialNumber
             this.lbError.BackColor = System.Drawing.Color.Transparent;
             this.lbError.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbError.ForeColor = System.Drawing.Color.OrangeRed;
-            this.lbError.Location = new System.Drawing.Point(28, 179);
+            this.lbError.Location = new System.Drawing.Point(28, 160);
             this.lbError.Name = "lbError";
             this.lbError.Size = new System.Drawing.Size(78, 16);
             this.lbError.TabIndex = 7;
             this.lbError.Text = "MSG ERRO";
             this.lbError.Visible = false;
             // 
-            // lbBIOS
-            // 
-            this.lbBIOS.AutoSize = true;
-            this.lbBIOS.BackColor = System.Drawing.Color.Transparent;
-            this.lbBIOS.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbBIOS.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.lbBIOS.Location = new System.Drawing.Point(142, 261);
-            this.lbBIOS.Name = "lbBIOS";
-            this.lbBIOS.Size = new System.Drawing.Size(94, 14);
-            this.lbBIOS.TabIndex = 5;
-            this.lbBIOS.Text = "MANUFACTURER";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.label4.Location = new System.Drawing.Point(28, 261);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(113, 14);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "BIOS MANUFACTURE:";
-            // 
             // txtSerialNumber
             // 
             this.txtSerialNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtSerialNumber.Font = new System.Drawing.Font("Arial", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSerialNumber.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtSerialNumber.Location = new System.Drawing.Point(31, 67);
+            this.txtSerialNumber.Location = new System.Drawing.Point(31, 38);
             this.txtSerialNumber.Name = "txtSerialNumber";
             this.txtSerialNumber.Size = new System.Drawing.Size(545, 81);
             this.txtSerialNumber.TabIndex = 0;
@@ -182,13 +155,14 @@ namespace WriteSerialNumber
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.MediumBlue;
-            this.ClientSize = new System.Drawing.Size(609, 332);
+            this.ClientSize = new System.Drawing.Size(609, 270);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Cursor = System.Windows.Forms.Cursors.Hand;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "WriteSerialNumber";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
@@ -205,8 +179,6 @@ namespace WriteSerialNumber
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtSerialNumber;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label lbBIOS;
         private System.Windows.Forms.Label lbError;
         private System.Windows.Forms.Button btnGet;
         private System.Windows.Forms.Button btnWrite;
